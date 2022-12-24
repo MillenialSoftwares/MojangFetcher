@@ -23,12 +23,17 @@ public class Profile {
     @Getter
     private Instant pulledOut;
 
+    @Nullable
+    @Getter
+    private ProfileTextures profileTextures;
+
     @Override
     public String toString() {
         return "Profile{" +
                 "playerUUID=" + playerUUID +
                 ", playerName='" + playerName + '\'' +
                 ", pulledOut=" + pulledOut +
+                ", profileTextures=" + profileTextures +
                 '}';
     }
 }
