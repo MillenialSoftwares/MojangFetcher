@@ -1,5 +1,6 @@
 package dev.projectplus.integrations.mojangfetcher.old.struct;
 
+import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -14,5 +15,8 @@ public abstract class UserCacheService {
     @Getter
     private boolean allowedEstablishedConnection;
 
-    public abstract CompletableFuture<FetchResult> openApiConnection();
+    public abstract CompletableFuture<JsonObject> openApiConnection(String identifier);
+
+    public abstract CompletableFuture<FetchResult> fetch(String identifier, boolean printMessages);
+
 }

@@ -4,16 +4,11 @@ import dev.projectplus.integrations.mojangfetcher.old.service.AshconUserCacheSer
 import dev.projectplus.integrations.mojangfetcher.old.struct.UserCacheService;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bukkit.plugin.Plugin;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MojangFetcher {
-
-    private MojangFetcher() {}
-
-    @Setter(AccessLevel.PROTECTED)
-    @Getter
-    private Plugin plugin;
 
     @Getter
     @Setter(AccessLevel.PRIVATE)
@@ -23,9 +18,8 @@ public class MojangFetcher {
     @Setter(AccessLevel.PRIVATE)
     private static UserCacheService userCacheService;
 
-    public static void init(Plugin plugin) {
+    public static void init() {
         setInstance(new MojangFetcher());
-        getInstance().setPlugin(plugin);
-        setUserCacheService(new AshconUserCacheService(getTextures));
+        setUserCacheService(new AshconUserCacheService(true));
     }
 }
