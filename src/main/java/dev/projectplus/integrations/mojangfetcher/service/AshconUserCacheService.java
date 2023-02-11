@@ -1,21 +1,20 @@
-package dev.projectplus.integrations.mojangfetcher.old.service;
+package dev.projectplus.integrations.mojangfetcher.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import dev.projectplus.integrations.mojangfetcher.old.MojangFetcher;
-import dev.projectplus.integrations.mojangfetcher.old.struct.FetchResult;
-import dev.projectplus.integrations.mojangfetcher.old.struct.UserCacheService;
+import dev.projectplus.integrations.mojangfetcher.struct.FetchResult;
+import dev.projectplus.integrations.mojangfetcher.struct.UserCacheService;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class AshconUserCacheService extends UserCacheService {
 
     public AshconUserCacheService(boolean doGetTextures) {
-        super("https://api.ashcon.app/mojang/v2/user/");
+        super("Ashcon","https://api.ashcon.app/mojang/v2/user/");
     }
 
     @Override
@@ -30,7 +29,7 @@ public class AshconUserCacheService extends UserCacheService {
         });
     }
 
-    public CompletableFuture<FetchResult> fetch(String identifier, boolean printMessages) {
+    public CompletableFuture<FetchResult> handle(String identifier, boolean printMessages) {
         return openApiConnection(identifier).handleAsync((jsonObject, throwable) -> {
             if (throwable != null && jsonObject == null) {
                 return new FetchResult(null, FetchResult.FetchInfo.CONNECTION_FAILED);
@@ -44,6 +43,10 @@ public class AshconUserCacheService extends UserCacheService {
                 if (errorCode == 429) return new FetchResult(null,FetchResult.FetchInfo.CONNECTION_RATE_LIMITED);
 
                 if (errorCode == 400) return new FetchResult(null, FetchResult.FetchInfo.UNKNOWN_USER);
+            }
+
+            if (!jsonObject.has("uuid") || !jsonObject.has("username")) {
+                return new FetchResult(null, FetchResult.FetchInfo.UNKNOWN_JSON_RESPONSE);
             }
 
             return new FetchResult(jsonObject, FetchResult.FetchInfo.CONNECTION_ESTABLISHED);

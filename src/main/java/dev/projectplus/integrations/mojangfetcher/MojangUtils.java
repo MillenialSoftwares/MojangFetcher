@@ -1,9 +1,9 @@
-package dev.projectplus.integrations.mojangfetcher.old;
+package dev.projectplus.integrations.mojangfetcher;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.gdalia.commandsplus.Main;
-import dev.projectplus.integrations.mojangfetcher.old.struct.Profile;
+import dev.projectplus.integrations.mojangfetcher.struct.Profile;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.InputStreamReader;
@@ -76,9 +76,4 @@ public class MojangUtils {
                 "(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5"));
     }
 
-    public enum QueriedResult {
-        BAD_REQUEST_NAME,
-        USER_NOT_EXIST,
-        CONNECTION_FAILED;
-    }
 }

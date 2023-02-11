@@ -1,7 +1,7 @@
-package dev.projectplus.integrations.mojangfetcher.old.manager;
+package dev.projectplus.integrations.mojangfetcher.manager;
 
-import dev.projectplus.integrations.mojangfetcher.old.MojangUtils;
-import dev.projectplus.integrations.mojangfetcher.old.struct.Profile;
+import dev.projectplus.integrations.mojangfetcher.MojangUtils;
+import dev.projectplus.integrations.mojangfetcher.struct.Profile;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package dev.projectplus.integrations.mojangfetcher.old.struct;
+package dev.projectplus.integrations.mojangfetcher.struct;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

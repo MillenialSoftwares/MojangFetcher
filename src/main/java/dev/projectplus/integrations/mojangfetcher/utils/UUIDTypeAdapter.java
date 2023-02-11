@@ -1,11 +1,11 @@
-package dev.projectplus.integrations.mojangfetcher.old.utils;
-
-import java.io.IOException;
-import java.util.UUID;
+package dev.projectplus.integrations.mojangfetcher.utils;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import java.io.IOException;
+import java.util.UUID;
 
 public class UUIDTypeAdapter extends TypeAdapter<UUID> {
 

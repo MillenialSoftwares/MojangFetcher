@@ -1,7 +1,7 @@
-package dev.projectplus.integrations.mojangfetcher.old;
+package dev.projectplus.integrations.mojangfetcher;
 
-import dev.projectplus.integrations.mojangfetcher.old.service.AshconUserCacheService;
-import dev.projectplus.integrations.mojangfetcher.old.struct.UserCacheService;
+import dev.projectplus.integrations.mojangfetcher.service.AshconUserCacheService;
+import dev.projectplus.integrations.mojangfetcher.struct.UserCacheService;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

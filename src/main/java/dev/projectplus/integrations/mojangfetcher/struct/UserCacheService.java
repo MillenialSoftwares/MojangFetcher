@@ -1,4 +1,4 @@
-package dev.projectplus.integrations.mojangfetcher.old.struct;
+package dev.projectplus.integrations.mojangfetcher.struct;
 
 import com.google.gson.JsonObject;
 import lombok.Getter;
@@ -10,6 +10,9 @@ import java.util.concurrent.CompletableFuture;
 public abstract class UserCacheService {
 
     @Getter
+    private final String serviceName;
+
+    @Getter
     private final String urlProviderString;
 
     @Getter
@@ -17,6 +20,6 @@ public abstract class UserCacheService {
 
     public abstract CompletableFuture<JsonObject> openApiConnection(String identifier);
 
-    public abstract CompletableFuture<FetchResult> fetch(String identifier, boolean printMessages);
+    public abstract CompletableFuture<FetchResult> handle(String identifier, boolean printMessages);
 
 }
